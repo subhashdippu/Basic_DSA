@@ -1,96 +1,83 @@
 #include<iostream>
 using namespace std;
+
 class Node{
     public:
-        int data;
-        Node* prev;
-        Node* next;
+    int data;
+    Node* next;
 
-        Node(int val){
-            data = val;
-            prev = NULL;
-            next = NULL;
-        }
-};
-
-void display(Node*head1){
-    Node* temp =  head1;
-    while(temp!=NULL){
-        cout<<temp->data<<" ";
-        temp = temp->next;
+    Node(int val){
+        data = val;
+        next = NULL;
     }
-    cout<<"\n";
-}
-void insertAtEnd(Node *&head, Node* node)
-{
-    if (head == NULL)
-    {
-        head = node;
+};
+void display(Node* head){
+    if(!head){
         return;
     }
-    Node *temp = head;
-    while (temp->next != NULL)
-    {
-        temp = temp->next;
-    }
-    temp->next = node;
-    node->prev = temp;
-}
-void InsertionAtStart(Node* &head, int val){
-    Node* node = new Node(val);
-    node->next = head;
-    head->prev = node;
-    head = node; 
-}
-void InsertAtIndex(Node* &head, int index, int val){
-    int i = 0;
-    Node* temp = head;
-    Node* node = new Node(val);
-    while(i<index-1){
-        temp = temp->next;
-        i++;
-    }
-    node->next = temp->next;
-    node->next->prev = node;
-    temp->next = node;
-    node->prev = temp;
-}
-void Insertion(Node* &head, int val){
-     
-}
-void display1(Node*head6){
-    Node* temp =  head6;
-    while(temp!=NULL){
-        cout<<temp->data<<" ";
-        temp = temp->prev;
+    Node* ptr = head;
+    while(ptr!=NULL){
+        cout<<ptr->data<<" ";
+        ptr = ptr->next;
     }
     cout<<"\n";
+};
+// void insertAtIndex(Node* &head, int val, int ind){
+//     Node* temp = new Node(val);
+//     Node* ptr = head;
+//     int j = 0;
+//     while(j != ind-1){
+//         ptr = ptr->next;
+//         j++;
+//     }
+
+//     temp->next = ptr->next;
+//     ptr->next = temp;
+// }
+
+
+Node* reserse(Node* &head){
+    Node* temp = NULL;
+    Node* cur = head;
+    Node* ptr = cur->next;
+
+    while(cur != NULL){
+        cur->next = temp;
+        temp = cur;
+        cur = ptr;
+        ptr = ptr->next;
+    }
+}
+void insertAtEnd(Node* &head, int val){
+    Node* temp = new Node(val);
+    Node* ptr = head;
+    while(ptr->next){
+        ptr = ptr->next;
+    }
+    ptr->next = temp;
+    temp->next = NULL;
+}
+Node* InsertAtStart(Node* &head, int val){
+    if(!head){
+        return NULL;
+    }
+    Node* temp = new Node(val);
+    temp->next = head;
+    return temp;
 }
 int main(){
-    Node* head1 = new Node(1);
-    Node* head2 = new Node(2);
-    Node* head3 = new Node(3);
-    Node* head4 = new Node(4);
-    Node* head5 = new Node(5);
-    Node* head6 = new Node(6);
-    head1->next = head2;
-    head2->prev = head1;
-    head2->next = head3;
-    head3->next = head4;
-    head3->prev = head2;
-    head4->prev = head3;
-    head4->next = head5;
-    head5->next = head6;
-    head5->prev = head4;
-    head6->prev = head5;
-    // display(head1);
-    // display1(head6);
-    // cout<<"\n";
-    // Node* node = new Node(7);
-    // insertAtEnd(head1,node);
-    InsertionAtStart(head1, 8);
-    // InsertAtIndex(head1, 3, 8);
-    display(head1);
-    display1(head6);
+    Node* head = new Node(51);
+    head->next = new Node(52);
+    head->next->next = new Node(53);
+    head->next->next->next = new Node(54);
+    head->next->next->next->next = new Node(55);
+    head->next->next->next->next->next = new Node(56);
+    head->next->next->next->next->next->next = NULL;
+    display(head);
+    // Node* newHead = InsertAtStart(head, 50);
+    // insertAtIndex(head, 66, 2);
+    // insertAtEnd(head, 66);
+    reserse(head);
+    display(head);
     return 0;
 }

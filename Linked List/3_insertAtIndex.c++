@@ -15,10 +15,10 @@ public:
 
 void insertAtIndex(Node *&head, int val, int ind)
 {
-    int i = 0;
+    int i = 1;
     Node *n = head;
     Node *temp = new Node(val);
-    while (i != ind - 1)
+    while (i != ind)
     {
         n = n->next;
         i++;
@@ -38,17 +38,17 @@ void display(Node *head)
 int main()
 {
 
-    Node* head = new Node(5);
-    Node* second = new Node(51);
-    Node* third = new Node(52);
-    Node* forth = new Node(53);
-    Node* five = new Node(54);
+    Node *head = new Node(5);
+    Node *second = new Node(51);
+    Node *third = new Node(52);
+    Node *forth = new Node(53);
+    Node *five = new Node(54);
     // insert(head, 6);
     // insert(head, 4);
     // insert(head, 5);
     // insert(head, 3);
     // display(head);
-    head->next=second;
+    head->next = second;
     second->next = third;
     third->next = forth;
     forth->next = five;

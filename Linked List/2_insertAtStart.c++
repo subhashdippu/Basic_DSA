@@ -14,17 +14,30 @@ public:
     }
 };
 
-void insertAtStart(Node* &head, int val)
+void insertAtStart(Node *&head, int val)
 {
     Node *temp = new Node(val);
-    if(!head){
-        temp = head;
+    if (!head)
+    {
+        head = temp;
         return;
-    } 
+    }
     temp->next = head;
     head = temp;
 }
 
+void insertAtIndex(Node* &head, int val, int ind){
+    Node* temp = new Node(val);
+    Node* ptr = head;
+    int j = 0;
+    while(j != ind-1){
+        ptr = ptr->next;
+        j++;
+    }
+
+    temp->next = ptr->next;
+    ptr->next = temp;
+}
 void display(Node *head)
 {
     Node *temp = head;
@@ -35,19 +48,32 @@ void display(Node *head)
     }
     cout << endl;
 }
+Node *reverse(Node *head)
+{
+    Node *prev = NULL;
+    Node *cur = head;
+    Node *next = cur->next;
+    while (cur)
+    {
+        cur->next = prev;
+        prev = cur;
+        cur = next;
+        next = next->next;
+    }
+    return cur;
+}
 int main()
 {
-    Node *head = new Node(5);
-    Node *second = new Node(51);
-    Node *third = new Node(52);
-    Node *forth = new Node(53);
-    Node *five = new Node(54);
-    head->next = second;
-    second->next = third;
-    third->next = forth;
-    forth->next = five;
-    five->next = NULL;
-    insertAtStart(head, 7);
+    Node *head = NULL;
     display(head);
+    insertAtStart(head, 71);
+    insertAtStart(head, 72);
+    insertAtStart(head, 73);
+    insertAtStart(head, 74);
+    insertAtStart(head, 75);
+    insertAtStart(head, 76);
+    display(head);
+    Node *newHead = reverse(head);
+    display(newHead);
     return 0;
 }

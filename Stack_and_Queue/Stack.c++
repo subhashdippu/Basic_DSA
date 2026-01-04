@@ -1,70 +1,64 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-class stack{
-    public:
-        int *arr;
-        int top;
-        int size;
-
-    stack(int size){
-        this -> size = size;
-        arr = new int[size];
+struct stack
+{
+    int *arr;
+    int top;
+    int size;
+    stack(int val)
+    {
+        size = val;
         top = -1;
+        arr = new int[size];
     }
-
-    void push(int element){
-        if(top>=-1 && top<size-1){
+    void push(int element)
+    {
+        if (top <= size - 1)
+        {
             top++;
             arr[top] = element;
         }
-        else{
-            cout<<"Stack OverFlow "<<endl;
+        else
+        {
+            cout << "Stack overflow" << "\n";
         }
     }
-    void pop(){
-        if(top>-1){
+    void pop()
+    {
+        if (top > -1)
+        {
             top--;
+            // free(arr[top]);
         }
-        else{
-            cout<<"Stack is empty "<<endl;
+        else
+        {
+            cout << "Stack is empty" << "\n";
         }
     }
-    int peek(){
-        if(top>-1){
+    int peek()
+    {
+        if (top > -1)
+        {
             return arr[top];
         }
-        else{
-            cout<<"Stack is empty"<<endl;
-            return -1;
-        }
-    }
-    bool empty(){
-        if(top==-1){
-            return true;
-        }
-        else{
-            return false;
-        }
+        cout << "Stack is empty" << "\n";
+        return -1;
     }
 };
-
-int main(){
-
+int main()
+{
     stack a(5);
-    a.push(4);
-    a.push(41);
-    a.push(42);
-    a.push(44);
-    a.push(43);
-    a.push(464);
-    // a.push(44);
-    // a.pop();
-    // a.pop();
-    // a.pop();
-    // a.pop();
-    // a.pop();
-    cout<<a.peek()<<endl;
-    // cout<<a.empty();
+    a.push(61);
+    a.push(62);
+    a.push(63);
+    a.push(64);
+    a.push(65);
+    a.push(66);
+    a.pop();
+    a.pop();
+    a.pop();
+    a.pop();
+    cout << a.peek();
     return 0;
 }

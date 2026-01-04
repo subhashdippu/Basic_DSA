@@ -1,53 +1,34 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-class Node{
-    public:
-        int data;
-        Node* left;
-        Node* right;
-        Node(int val){
-            data = val;
-            left = NULL;
-            right = NULL;
+void InsertionSort(int arr[], int n)
+{
+    for (int i = 1; i < n; i++)
+    {
+        int temp = arr[i];
+        int j = i - 1;
+        while (j >= 0 && arr[j] > temp)
+        {
+            arr[j + 1] = arr[j];
+            j--;
         }
-};
-void preorder(Node* root){
-    if(!root) return;
-    cout<<root->data<<" ";
-    preorder(root->left);
-    preorder(root->right);
+        arr[j + 1] = temp;
+    }
 }
-void postorder(Node* root){
-    if(!root) return;
-    postorder(root->left);
-    postorder(root->right);
-    cout<<root->data<<" ";
+void display(int arr[], int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << "\n";
 }
-void inorder(Node* root){
-    if(!root) return;
-    inorder(root->left);
-    cout<<root->data<<" ";
-    inorder(root->right);
-}
-int main(){
-    Node* root = new Node(6);
-    Node* head1 = new Node(2);
-    Node* head2 = new Node(3);
-    Node* head3 = new Node(21);
-    Node* head4 = new Node(31);
-    Node* head5 = new Node(22);
-    Node* head6 = new Node(34);
-    root->left = head1;
-    root->right = head2;
-    head1->left = head3;
-    head1->right = head4;
-    head3->left = head5;
-    head4->left = head6;
-    preorder(root);
-    cout<<"\n";
-    postorder(root);
-    cout<<"\n";
-    inorder(root);
+int main()
+{
+    int arr[] = {3, 52, 42, 1, 4, 16, 2};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    display(arr, n);
+    InsertionSort(arr, n);
+    display(arr, n);
     return 0;
 }

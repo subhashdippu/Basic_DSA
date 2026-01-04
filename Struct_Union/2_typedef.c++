@@ -1,32 +1,32 @@
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <string>
+#include <vector>
 using namespace std;
 
-// Store Multi data type means disimiler data type
-typedef struct employee{
-    int Id;
-    char car;
-    float salary;
-}em; // Write em instead of stuct employee
-int main(){
-    em Subhash;
-    struct employee Dippu; 
-    Subhash.Id = 545;
-    Subhash.car = 'B';
-    Subhash.salary = 50000000;
+string SecondGreatLow(int arr[], int n)
+{
+  string str = " ";
+  string str2 = " ";
+  if (n == 2)
+  {
+    str = to_string(arr[0]);
+    str2 = to_string(arr[1]);
+    // str.append(str2);
+    str.append(str2);
+    // str = to_string(arr[0]);
+    // str = to_string(arr[1]);
+  }
 
-    cout<<Subhash.salary<<endl;
-    cout<<Subhash.Id<<endl;
-    cout<<Subhash.car<<endl;
-    cout<<"\n";
+  // code goes here
+  return str;
+}
 
-    Dippu.Id = 54;
-    Dippu.car = 'S';
-    Dippu.salary = 90000000;
+int main(void)
+{
 
-    cout<<Dippu.salary<<endl;
-    cout<<Dippu.Id<<endl;
-    cout<<Dippu.car<<endl;
-
-    return 0;
+  // keep this function call here
+  int A[] = {4, 90};
+  int arrLength = sizeof(A) / sizeof(*A);
+  cout << SecondGreatLow(A, arrLength);
+  return 0;
 }
