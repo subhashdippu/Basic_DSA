@@ -27,7 +27,7 @@ int solve(int N){
     return dp[N-1]; 
 }
 int main(){
-    int N = 15;
+    int N = 3;
     int ans = solve(N);
     cout<<ans;
     return 0;

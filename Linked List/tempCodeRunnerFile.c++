@@ -22,19 +22,6 @@ void display(Node* head){
     }
     cout<<"\n";
 };
-// void insertAtIndex(Node* &head, int val, int ind){
-//     Node* temp = new Node(val);
-//     Node* ptr = head;
-//     int j = 0;
-//     while(j != ind-1){
-//         ptr = ptr->next;
-//         j++;
-//     }
-
-//     temp->next = ptr->next;
-//     ptr->next = temp;
-// }
-
 
 Node* reserse(Node* &head){
     Node* temp = NULL;
@@ -64,6 +51,43 @@ Node* InsertAtStart(Node* &head, int val){
     Node* temp = new Node(val);
     temp->next = head;
     return temp;
+}
+
+Node* detectCycle(Node* head){
+    Node* slow = head;
+    Node* fast = head;
+    while(fast && fast->next){
+        slow = slow->next;
+        fast = fast->next->next;
+        if(slow == fast){
+            slow = head;
+            while(slow != fast){
+                slow = slow->next
+                fast = fast->next;
+            }
+            return slow;
+        }
+    }
+    return NULL;
+}
+
+int detectCycle(Node* head){
+    Node* slow = head;
+    Node* fast = head;
+    while(fast && fast->next){
+        slow = slow->next;
+        fast = fast->next->next;
+        if(slow == fast){
+            int count = 0;
+          
+            while(slow != fast){
+                fast = fast->next;
+                count++
+            }
+            return count;
+        }
+    }
+    return 0;
 }
 int main(){
     Node* head = new Node(51);

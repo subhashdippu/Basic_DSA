@@ -6,9 +6,9 @@ int main(){
     vector<int>b = {0,2,2,10,21,23};
     int n = a.size()-1;
 
-    int dp_e[n+1];
-    int dp_h[n+1];
-    int dp_n[n+1];
+    int dp_e[10+1];
+    int dp_h[11+1];
+    int dp_n[11+1];
 
     dp_e[0] = 0;
     dp_h[0] = 0;
@@ -20,6 +20,7 @@ int main(){
         dp_e[i] = a[i] + max({dp_h[i-1], dp_n[i-1], dp_e[i-1]});
         dp_h[i] = b[i] + dp_n[i-1];
         dp_n[i] = a[i] + max({dp_h[i-1], dp_n[i-1], dp_e[i-1]});
+        i++;
     }
     cout<< max({dp_h[n], dp_n[n], dp_e[n]});
     return 0;

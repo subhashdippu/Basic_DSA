@@ -19,7 +19,6 @@ int main(){
         dp_odd[1] = dp_even[0];
     }
 
-
     int i = 2;
     while(i<arr.size()){
         if(arr[i]%2==0){

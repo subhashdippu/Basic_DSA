@@ -4,7 +4,7 @@
 #include <unordered_map>
 using namespace std;
 
-int key_pair(int arr[], int n, int k)
+int sub_array_count(int arr[], int n, int k)
 {
     unordered_map<int, int> map;
     int count = 0;
@@ -25,7 +25,7 @@ int main()
 {
     int arr[] = {3, 9, -2, 4, 1, -7, 2, 6, -5, 8, -3, -7, 6, 2, 1};
     int n = sizeof(arr) / sizeof(int);
-    int a = key_pair(arr, n, 5);
+    int a = sub_array_count(arr, n, 5);
     cout << a;
     return 0;
 }
