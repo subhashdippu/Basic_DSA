@@ -8,73 +8,6 @@ vector<int>vis(400);
 int count1 = 0;
 int c = 0;
 
-void bfs(){
-    vector<int>vis(400);
-    queue<int>q;
-    vector<int>level(200);
-    vis[1] = 1;
-    level[1] = 1;
-    q.push(1);
-    while(!q.empty()){
-        int cur = q.front();
-        q.pop();
-        cout<<cur<<" "<<level[cur]<<"\n";
-        for(auto x: g[cur]){
-            if(!vis[x]){
-                level[x] = level[cur] + 1;
-                vis[x] = 1;
-                q.push(x);
-            }
-        }
-    }
-}
-
-void connectedElement(){
-    // for(int i=0;i<8; i++){
-    //     for(auto x: g[i]){
-    //         cout<<i<<" "<<x<<" ";
-    //     }
-    //     cout<<"\n";
-    // }
-    for(int i=0;i<8; i++){
-        cout<<i<<" "<<g[i].size()<<"\n";
-    }
-}
-
-void dfs(int node){
-    vis[node] = 1;
-    cout<<node<<" ";
-    for(auto x: g[node]){
-        if(!vis[x]){
-            dfs(x);
-        }
-    }
-}
-
-void noOfConnectedGraph(int node){
-    vis[node] = 1;
-    cout<<node<<" ";
-    c++;
-    for(auto x: g[node]){
-        if(!vis[x]){
-            noOfConnectedGraph(x);
-        }
-    }
-}
-
-void connectedComponent(){
-    for(int i =1; i<=9; i++){
-        if(!vis[i]){
-            noOfConnectedGraph(i);
-            count1++;
-            cout<<c<<"\n";
-        }
-        c=0;
-    }
-    cout<<"\n";
-    cout<<count1;
-}
-
 vector<set<int>>k(200);
 unordered_map<int, int>componentElement;
 int cn = 1;
@@ -141,10 +74,6 @@ int main(){
         g[x].push_back(y);
         g[y].push_back(x);
     }
-    // bfs();
-    // connectedElement();
-    // dfs(1);
-    // connectedComponent()
     for(int i=1;i<n; i++){
         if(!vis[i]){
             ArrangeComponent(i);
