@@ -4,10 +4,10 @@
 
 using namespace std;
 
-vector<vector<int>>g(5);
+vector<vector<int>>g(49);
 
 void solve(){
-    for(int i=0;i<n; i++){
+    for(int i=0;i<5; i++){
         cout<<i<<" "<<g[i].size();
     }
 }

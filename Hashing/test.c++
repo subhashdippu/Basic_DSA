@@ -3,37 +3,36 @@
 #include<iostream>
 #include <vector>
 #include <unordered_map>
+// #include <algorithm>
 using namespace std;
 
-void solve(vector<int>arr, int n){
-    int k = 5;
-    unordered_map<int, int>map1;
-    unordered_map<int, int>map2;
-    int count  = 0;
-    int cur = 0;
-    int largest = INT_MIN; 
-    int smallest = INT_MAX;
+vector<string> solve(vector<string>arr){
 
-    for(int i=0;i<n; i++){
-        if(map1.find(arr[i] - k) != map1.end()){
-            largest = max(largest, i - map1[arr[i] - k]);
-        }
+    vector<int>ans(26, INT_MAX);
+    vector<string>res;
 
-        if(map1.find(arr[i]) == map1.end()){
-            map1[arr[i]] = i;
+    for(auto s: arr){
+        vector<int>stringCount(26, 0);
+        for(auto x: s){
+            stringCount[x - 'a']++;
         }
-        if(map2.find(arr[i] - k) != map2.end()){
-            smallest = min(smallest, i - map2[arr[i] - k]);
+        for(int i =0; i<26; i++){
+            ans[i] = min(ans[i], stringCount[i]);
         }
-        map2[arr[i]] = i;
-      
     }
-    cout<<"Enter the largest: "<<largest<<"\n";
-    cout<<"Enter the smallest: "<<smallest;
-}
+    for(int i=0;i<26; i++){
+        for(int j=0;j<ans[i]; j++){
+            res.push_back(string(1, i + 'a'));
+        }
+    }
+    return res;
+} 
+
 int main(){
-    vector<int>arr = {3, 9, -2, 4, 1, -7, 2, 6, -5, 8, -3, -7, 6, 2, 1};
-    int n = arr.size();
-    solve(arr, n);
+    vector<string> arr = {"bella", "label", "roller"};
+    vector<string> ans1 = solve(arr);
+    for(int i=0;i<ans1.size(); i++){
+        cout<<ans1[i]<<" ";
+    }
     return 0;
 }

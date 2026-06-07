@@ -4,6 +4,7 @@ using namespace std;
 vector<vector<int>>g(500);
 int vis[500] = {0};
 int c = 0;
+
 void dfs(int root){
     cout<<root<<" ";
     c++;
@@ -14,6 +15,7 @@ void dfs(int root){
         }
     }
 }
+
 int main(){
     int n, m, x,y;
     cout<<"Enter the N: ";

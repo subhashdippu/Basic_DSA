@@ -1,6 +1,9 @@
+// Radha
 #include<iostream>
 using namespace std;
 vector<vector<int>>g(500);
+int cur_sum = 0;
+vector<int>vis(100);
 
 // void No_Connected_Node(int n){
 //     for(int i=1;i<=n; i++){
@@ -36,6 +39,89 @@ vector<vector<int>>g(500);
 //     }
 // }
 
+
+vector<vector<int>>componentSum(200);
+void dfs(int a){
+    vis[a] = 1;
+    cout<<a<<" ";
+    cur_sum += a;
+    for(auto x: g[a]){
+        if(!vis[x]){
+            dfs(x);
+        }
+    }
+}
+void noOfConnectedGraph(){
+    int count = 0;
+    for(int i=1;i<=9; i++){
+        if(!vis[i]){
+            dfs(i);
+            count++;
+            componentSum[count].push_back(cur_sum);
+            cur_sum = 0;
+        }
+    }
+    cout<<"\nNo of component "<<count<<"\n";
+    for(int i=1;i<=componentSum.size(); i++){
+        for(auto x: componentSum[i]){
+            cout<<"Component "<<i<<" sum of this component "<<x<<"\n";
+        }
+    }
+}
+// void dfs(int node){
+//     vector<int>vis(500);
+//     vis[node] = 1;
+//     for(auto x: g[node]){
+//         if(!vis[x]){
+//             dfs(node);
+//         }
+//     }
+
+// }
+
+int main(){
+    int n, m, x, y;
+    cout<<"Enter the no: of node: ";
+    cin>>n;
+    cout<<"Enter the no: of edge: ";
+    cin>>m;
+    for(int i=0;i<m; i++){
+        cout<<"Enter the x: ";
+        cin>>x;
+        cout<<"Enter the y: ";
+        cin>>y;
+        g[x].push_back(y);
+        g[y].push_back(x);
+    }
+    // No_Connected_Node(n);
+    // No_Of_Node_Connected_With_Current_Node(n);
+    // bfs(1);
+    // bfs_with_level(1);
+    // dfs(1);
+
+    noOfConnectedGraph();
+    // cout<<"\n"<<ans;
+
+    return 0;
+
+}
+
+
+
+
+
+
+
+
+// graph
+// 1 - print no: of node connected with the current node        -> done
+// 2 - Print no: of elememnt connected with the current node
+// 3 - bfs
+// 4 - dfs
+
+
+
+
 // void bfs_with_level(int node){
 //     queue<int>q;
 //     vector<int>vis(400);
@@ -56,49 +142,3 @@ vector<vector<int>>g(500);
 //         }
 //     }
 // }
-
-void dfs(int node){
-    vector<int>vis(500);
-    vis[node] = 1;
-    for(auto x: g[node]){
-        if(!vis[x]){
-            dfs(node);
-        }
-    }
-}
-
-int main(){
-    int n, m, x, y;
-    cout<<"Enter the no: of node: ";
-    cin>>n;
-    cout<<"Enter the no: of edge: ";
-    cin>>m;
-    for(int i=0;i<m; i++){
-        cout<<"Enter the x: ";
-        cin>>x;
-        cout<<"Enter the y: ";
-        cin>>y;
-        g[x].push_back(y);
-        g[y].push_back(x);
-    }
-    // No_Connected_Node(n);
-    // No_Of_Node_Connected_With_Current_Node(n);
-    // bfs(1);
-    // bfs_with_level(1);
-    dfs(1);
-    return 0;
-
-}
-
-
-
-
-
-
-
-
-// graph
-// 1 - print no: of node connected with the current node        -> done
-// 2 - Print no: of elememnt connected with the current node
-// 3 - bfs
-// 4 - dfs

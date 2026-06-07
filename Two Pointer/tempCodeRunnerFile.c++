@@ -2,29 +2,29 @@
 #include<iostream>
 using namespace std;
 
-void solve(vector<int> arr, int n){
-    int i = 0; 
-    int k = 4;
-    int j = 0;
-    int cur_sum = 0;
-    int count = 0;
-    while(i<n){
-        cur_sum += arr[j];
-        if(cur_sum > k){
-            while(cur_sum>k){
-                cur_sum = cur_sum - arr[i];
-                i++;
-            }
+void solve(vector<int>arr1, vector<int>arr2, int n){
+    int maxi = 0; 
+    int k = 32;
+    int i = 0;
+    int j = n-1;
+    while(i<n || 0>=j){
+        if(arr1[i] + arr2[j] <=k ){
+            maxi = max(maxi, arr1[i] + arr2[j])
         }
-        
-        count += j - i + 1;
-        j++;
+        else if(arr1[i] + arr2[j] > k ){
+            j--;
+        }
+        else{
+            i++;
+        }
     }
-    cout<<count;
+    cout<<maxi;
 }
-int main(){
- vector<int>arr = {1, 2, 3 ,5, 8, 8, 8 ,8 ,2 ,1, 1, 1, 1, 1, 1 };
-       int n = arr.size();
-    solve(arr, n);
+int main(){.           
+    vector<int>arr1 = {1, 4, 5, 7};
+    vector<int>arr2 = {10, 20, 30, 40};
+                                  
+    int n = arr1.size();
+    solve(arr1, arr2, n);
     return 0;
 }

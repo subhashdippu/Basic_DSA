@@ -10,4 +10,3 @@ console.log(arr.splice(1, 3)); //Modify the original array and you can also add 
 // arr.splice(1, 3);
 
 console.log(arr);
-console.log(arr);
